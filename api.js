@@ -1,10 +1,15 @@
 import usuarios from './usuarios.json' assert { type: "json" };
 
+const usuariosBuscados = usuarios;
+
 const promesaACumplir = new Promise((resolve, reject) => {
-    const usuariosBuscados = usuarios;
+
     setTimeout(() => {
         if(usuariosBuscados != ""){
-            resolve(usuariosBuscados);
+            let nombreUsuario = usuariosBuscados.forEach ((user) => {
+                console.log("Nombre: "+ user.nombre)
+            })
+            resolve(nombreUsuario);
         } else {
             reject("Error al buscar usuarios");
         }
@@ -12,7 +17,7 @@ const promesaACumplir = new Promise((resolve, reject) => {
 });
 
 promesaACumplir
-    .then((respuesta) => console.log(respuesta))
+    .then(() => console.log("Estos son los usuarios"))
     .catch((error) => console.log(error))    
 
 
