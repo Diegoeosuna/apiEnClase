@@ -6,9 +6,7 @@ const promesaACumplir = new Promise((resolve, reject) => {
 
     setTimeout(() => {
         if(usuariosBuscados != ""){
-            let nombreUsuario = usuariosBuscados.forEach ((user) => {
-                console.log("Nombre: "+ user.nombre)
-            })
+            let nombreUsuario = usuariosBuscados.forEach ((user) => {console.log("Nombre: "+ user.nombre)})
             resolve(nombreUsuario);
         } else {
             reject("Error al buscar usuarios");
