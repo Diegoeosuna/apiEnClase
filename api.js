@@ -20,13 +20,13 @@ const promesaACumplir = new Promise((resolve, reject) => {
 
 //Segunda Tarea
 
-async function findAllCharacters(){
+/*async function findAllCharacters(){
     let contador = 0; //Se hace un contador para asignarse a cada elemento y que se puedan identificar y mostrar.
     let characterReceptor = []; //Variable donde se guardará la información solicitada.
     const charactersReceived = await fetch("https://rickandmortyapi.com/api/character"); //Se piden los datos del API
 
     const charactersJson = await charactersReceived.json(); //Se convierte la información recibida a formato json.
-    
+
     charactersJson.results.forEach((character) => //De los datos recibidos y ya convertidos a JSON, se toma del array "results" por cada personaje la info solicitada
     {characterReceptor.push({ //Se agrega la info solicitada al array creado para usar como receptor de info
         id: contador,
@@ -39,6 +39,37 @@ async function findAllCharacters(){
 })
 
 console.log(characterReceptor); //Importante!!! Agregar el console log del array.
+
 }
 
-findAllCharacters(); //Se llama la función para que se vea en la Terminal.
+findAllCharacters(); //Se llama la función para que se vea en la Terminal.*/
+
+
+//Ejemplo de sensei
+async function EncontrarTodosPersonajes(){
+    const data = await fetch ("https://rickandmortyapi.com/api/character");
+
+    const dataJson = await data.json();
+
+    const resultadosObtenidos = dataJson.results;
+
+    const resultadosFormateados = [];
+
+    //resultadosObtenidos.forEach((personaje) ---- Funcionan ambas similar en esta ocasión.
+    resultadosObtenidos.map((personaje) => {
+        let personajeFormateado = {
+            Nombre: personaje.name,
+            Origin: personaje.origin.name,
+            Gender: personaje.gender,
+            Image: personaje.image,
+        };
+
+        resultadosFormateados.push(personajeFormateado);
+    });
+
+    console.log(resultadosFormateados);
+
+    return resultadosFormateados;
+}
+
+EncontrarTodosPersonajes();
